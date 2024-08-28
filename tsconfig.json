@@ -1,0 +1,6 @@
+{
+    "extends": "./config/baseTsConfig.json",
+    "compilerOptions": {
+        "outDir": "./bin" /* Specify an output folder for all emitted files. */
+    }
+}

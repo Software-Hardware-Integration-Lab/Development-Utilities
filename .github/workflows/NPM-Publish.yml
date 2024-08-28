@@ -1,0 +1,111 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+# Display Name of the workflow
+name: Publish NPM Package
+
+# When this workflow triggers
+on:
+  # Only when a release is published
+  release:
+    types: [released]
+
+# Define each session of execution that should be executed
+jobs:
+  # Execution session that builds and runs tests/linting on the code one more time
+  build-validate:
+    # Configures the filter for which operating system that should be used when selecting runners
+    runs-on: ubuntu-latest
+
+    # Set of commands to run for the build job
+    steps:
+      # Checks-out the repository under $GITHUB_WORKSPACE
+      - name: Clone Repo
+        uses: actions/checkout@v4
+
+      # Set up NodeJS on the build host with caching support to optimize execution
+      - name: Setup Node.JS Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          ache: npm
+          cache-dependency-path: package-lock.json
+
+      # Make sure that all of the version numbers align before publishing
+      - name: Ensure Synced Versions
+        run: |
+          TAG_VERSION=${GITHUB_REF#refs/tags/}
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          PACKAGE_LOCK_VERSION=$(node -p "require('./package-lock.json').version")
+          echo "Package version: $PACKAGE_VERSION"
+          echo "Package-lock version: $PACKAGE_LOCK_VERSION"
+          echo "Tag version: $TAG_VERSION"
+          if [ "$PACKAGE_VERSION" != "$TAG_VERSION" ]; then
+            echo "Version mismatch between package.json and git tag. Please increment the project before publishing!"
+            exit 1
+          fi
+          if [ "$PACKAGE_LOCK_VERSION" != "$TAG_VERSION" ]; then
+            echo "Version mismatch between package-lock.json and git tag. Please increment the project before publishing!"
+            exit 1
+          fi
+
+      # Install all of the dependencies
+      - name: Install All of the Project Dependencies
+        run: npm ci
+
+      # Compile the Typescript files to JS
+      - name: Build Project
+        run: npm run-script build
+
+      # Run all the existing unit tests
+      - name: Runt Unit Tests
+        run: npm run-script test
+
+      # Lint the Source code to ensure project standardization and best practices
+      - name: Run Lint Tests
+        run: npm run-script lint
+
+  # Execution session that publishes created artifact to NPM
+  publish-package:
+    # Requires successful completion of the specified job to continue
+    needs: build-validate
+
+    # Configures the filter for which operating system that should be used when selecting runners
+    runs-on: ubuntu-latest
+
+    # Sets the scopes available to the github_token injected to the GH Actions runner
+    permissions:
+      id-token: write
+      contents: read
+
+    # Set of commands to run for the build job
+    steps:
+      # Checks-out the repository under $GITHUB_WORKSPACE
+      - name: Clone Repo
+        uses: actions/checkout@v4
+
+      # Set up NodeJS on the build host and targets npm registry to publish the artifact
+      - name: Set up Node.JS Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+          scope: shi-corp
+
+      # Install project dependencies
+      - name: Clean Install All Dependencies
+        run: npm ci
+
+      # Compile the Typescript files to JS
+      - name: Build Project
+        run: npm run-script build:prod
+
+      # Install project dependencies
+      - name: Clear All but Runtime Dependencies
+        run: npm ci --omit=dev
+
+      # Create and Publish artifact to remote NPM registry
+      - name: Upload Package to NPM Registry
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH}}
