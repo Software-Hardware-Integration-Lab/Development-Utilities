@@ -40,6 +40,10 @@ jobs:
             - name: Install All of the Project Dependencies
               run: npm install
 
+            # Compile the Typescript files to JS
+            - name: Build Project
+              run: npm run-script build
+
             # Lint the Source code to ensure project standardization and best practices
             - name: Lint Source Code
               run: npm run-script lint
