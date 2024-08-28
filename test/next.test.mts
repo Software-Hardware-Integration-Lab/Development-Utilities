@@ -1,6 +1,6 @@
 import { assert } from 'chai';
-import { nextConfig } from '../config/baseNextConfig.mjs';
 import { it } from 'mocha';
+import { nextConfig } from '../config/baseNextConfig.mjs';
 
 describe('Validate Successful Import of Next.js configuration', () => {
     it('Import is of object type', (done) => {
