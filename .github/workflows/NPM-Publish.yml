@@ -1,6 +1,3 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
 # Display Name of the workflow
 name: Publish NPM Package
 
@@ -12,23 +9,26 @@ on:
 
 # Define each session of execution that should be executed
 jobs:
-  # Execution session that builds and runs tests/linting on the code one more time
-  build-validate:
+  # Execution session that verifies the artifacts that are used for deployment
+  Test-Artifact:
+    # Display name of the job
+    name: Test Artifact
+
     # Configures the filter for which operating system that should be used when selecting runners
     runs-on: ubuntu-latest
 
     # Set of commands to run for the build job
     steps:
-      # Checks-out the repository under $GITHUB_WORKSPACE
+      # Checks-out your repository under $GITHUB_WORKSPACE
       - name: Clone Repo
         uses: actions/checkout@v4
 
       # Set up NodeJS on the build host with caching support to optimize execution
-      - name: Setup Node.JS Runtime
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
-          ache: npm
+          cache: npm
           cache-dependency-path: package-lock.json
 
       # Make sure that all of the version numbers align before publishing
@@ -51,32 +51,36 @@ jobs:
 
       # Install all of the dependencies
       - name: Install All of the Project Dependencies
-        run: npm ci
+        run: npm install
 
       # Compile the Typescript files to JS
-      - name: Build Project
-        run: npm run-script build
+      - name: Build Project in Development Mode
+        run: npm run-script build:Dev
 
-      # Run all the existing unit tests
+      # Run all of the Unit Tests
       - name: Runt Unit Tests
-        run: npm run-script test
+        run: npm run-script test:Unit
 
-      # Lint the Source code to ensure project standardization and best practices
+      # Run the linter to make sure the project is compliant
       - name: Run Lint Tests
         run: npm run-script lint
 
-  # Execution session that publishes created artifact to NPM
-  publish-package:
-    # Requires successful completion of the specified job to continue
-    needs: build-validate
+  # Execution session that builds and runs tests/linting on the code one more time
+  Build-Artifact:
+    # Display name of the job
+    name: Build Artifact
 
     # Configures the filter for which operating system that should be used when selecting runners
     runs-on: ubuntu-latest
 
+    # Require the test step to complete before creating the artifact
+    needs: Test-Artifact
+
     # Sets the scopes available to the github_token injected to the GH Actions runner
     permissions:
-      id-token: write
+      attestations: write
       contents: read
+      id-token: write
 
     # Set of commands to run for the build job
     steps:
@@ -84,7 +88,64 @@ jobs:
       - name: Clone Repo
         uses: actions/checkout@v4
 
-      # Set up NodeJS on the build host and targets npm registry to publish the artifact
+      # Set up NodeJS on the build host with caching support to optimize execution
+      - name: Setup Node.JS Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          ache: npm
+          cache-dependency-path: package-lock.json
+
+      # Install all of the dependencies
+      - name: Install All of the Project Dependencies
+        run: npm install
+
+      # Compile the Typescript files to JS
+      - name: Build Project
+        run: npm run-script build:Prod
+
+      # Create a ZIP archive of the server files to speed up the upload process
+      - name: Zip up Server Files
+        run: zip -r package.zip bin/ config/baseTsConfig.json LICENSE README.md package.json
+
+      # Create an attestation for the compiled package and upload it to the internal system for health tracking
+      - name: Attest Compiled Package
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: package.zip
+
+      # Upload compiled zip file so that other execution sessions can use it
+      - name: Upload Artifact for Deployment Job
+        uses: actions/upload-artifact@v4
+        with:
+          compression-level: 9
+          if-no-files-found: error
+          name: Common-Utilities
+          path: package.zip
+          retention-days: 1
+
+  # Execution Session that deploys the artifact to NPM
+  Deploy-NPM:
+    # Display name of the job
+    name: Deploy to NPM
+
+    # Configures the filter for which operating system that should be used when selecting runners
+    runs-on: ubuntu-latest
+
+    # Require the build step to complete before running the deployment
+    needs: Build-Artifact
+
+    # Sets the scopes available to the github_token injected to the GH Actions runner
+    permissions:
+      contents: none
+      id-token: write
+
+    # The deploy step runs in the Azure environment context
+    environment: NPM
+
+    # Set of commands to run for the build job
+    steps:
+      # Set up NodeJS on the build host with caching support to optimize execution
       - name: Set up Node.JS Runtime
         uses: actions/setup-node@v4
         with:
@@ -92,20 +153,18 @@ jobs:
           registry-url: https://registry.npmjs.org/
           scope: shi-corp
 
-      # Install project dependencies
-      - name: Clean Install All Dependencies
-        run: npm ci
+      # Download the compiled server binary
+      - name: Download Artifact From Build Job
+        uses: actions/download-artifact@v4
+        with:
+          name: Common-Utilities
 
-      # Compile the Typescript files to JS
-      - name: Build Project
-        run: npm run-script build:prod
+      # Extract the zip file and remove the container
+      - name: Unzip Artifact
+        run: unzip package.zip && rm package.zip
 
-      # Install project dependencies
-      - name: Clear All but Runtime Dependencies
-        run: npm ci --omit=dev
-
-      # Create and Publish artifact to remote NPM registry
+      # Publish the artifact to NPM with attestation
       - name: Upload Package to NPM Registry
         run: npm publish --access public --provenance
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}

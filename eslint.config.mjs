@@ -1,4 +1,4 @@
-import { eslintConfig } from './bin/index.mjs';
+import { eslintConfig } from './bin/index.js';
 
 export default [
     ...eslintConfig,

@@ -14,7 +14,7 @@ in tsconfig.json make these changes
 {
   "extends": "./node_modules/@shi-corp/common-utilities/config/baseTsConfig.json",
   "compilerOptions": {
-    "outDir": "<location of the output folder for your project, if its used>"
+    "outDir": "<location of the output folder for your project, if it is used>"
   }
   ... // any other options that need to override base behavior
 }

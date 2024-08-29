@@ -4,6 +4,9 @@ import jsdoc from 'eslint-plugin-jsdoc';
 import stylistic from '@stylistic/eslint-plugin';
 import tseslint from 'typescript-eslint';
 
+/**
+ * Array of configuration objects merged together to form baseline for linting of the code.
+ */
 export const eslintConfig = tseslint.config(
     eslint.configs.recommended,
     jsdoc.configs['flat/recommended-typescript'],
