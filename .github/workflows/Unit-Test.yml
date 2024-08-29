@@ -37,11 +37,11 @@ jobs:
 
     # Install all of the dependencies
     - name: Clean Install of the Project Dependencies
-      run: npm ci
+      run: npm install
 
     # Compile the Typescript files to JS
     - name: Build Project
-      run: npm run-script build
+      run: npm run-script build:Dev
 
     # Run all the existing unit tests
     - name: Run the Unit Tests
