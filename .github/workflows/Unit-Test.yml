@@ -45,4 +45,4 @@ jobs:
 
     # Run all the existing unit tests
     - name: Run the Unit Tests
-      run: npm run-script test
+      run: npm run-script test:Unit
