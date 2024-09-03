@@ -1,7 +1,7 @@
 {
   "name": "@shi-corp/common-utilities",
   "version": "0.0.1",
-  "description": "Collection of configurations, settings and packages to be common across multiple products/repos",
+  "description": "Collection of configurations, settings and packages to be common across multiple products/repositories.",
   "main": "bin/index.js",
   "type": "module",
   "scripts": {
@@ -13,11 +13,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Software-Hardware-Integration-Lab/Common-Utilities.git"
+    "url": "git+https://github.com/Software-Hardware-Integration-Lab/Common-Utilities"
   },
   "keywords": [
     "ESLint",
-    "ESLint Config",
+    "config",
+    "lint",
+    "standardization",
     "JSDoc",
     "Stylistic",
     "TypeScript",
