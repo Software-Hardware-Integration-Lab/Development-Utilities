@@ -1,0 +1,10 @@
+{
+    "extends": "./config/baseTsConfig.json",
+    "compilerOptions": {
+        "outDir": "./bin", /* Specify an output folder for all emitted files. */
+        "module": "Node16", /* Specify what module code is generated. */
+        "moduleResolution": "Node16", /* Specify how TypeScript looks up a file from a given module specifier. */
+        "declaration": true, /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
+        "removeComments": false
+    }
+}

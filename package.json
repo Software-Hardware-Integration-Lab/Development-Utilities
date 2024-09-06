@@ -1,0 +1,59 @@
+{
+  "name": "@shi-corp/common-utilities",
+  "version": "1.0.0",
+  "description": "Collection of configurations, settings and packages to be common across multiple products/repositories.",
+  "main": "bin/index.js",
+  "type": "module",
+  "scripts": {
+    "build:Dev": "tsc",
+    "prebuild:Prod": "tsc -p prod.tsconfig.json --emitDeclarationOnly false",
+    "build:Prod": "tsc -p prod.tsconfig.json --removeComments false",
+    "lint": "eslint --max-warnings 0",
+    "test:Unit": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Software-Hardware-Integration-Lab/Common-Utilities"
+  },
+  "keywords": [
+    "ESLint",
+    "config",
+    "lint",
+    "standardization",
+    "JSDoc",
+    "Stylistic",
+    "TypeScript",
+    "tsconfig",
+    "Next.js config"
+  ],
+  "author": "Pasha Zayko <pasha_zayko@shi.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Software-Hardware-Integration-Lab/Common-Utilities/issues"
+  },
+  "homepage": "https://github.com/Software-Hardware-Integration-Lab/Common-Utilities#readme",
+  "dependencies": {
+    "@stylistic/eslint-plugin": "^2.7.2",
+    "eslint": ">=9.9.1",
+    "eslint-plugin-jsdoc": "^50.2.2",
+    "typescript-eslint": "^8.4.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.9.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.18",
+    "@types/eslint": "^9.6.1",
+    "@types/eslint__js": "^8.42.3",
+    "@types/mocha": "^10.0.7",
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3",
+    "next": "^14.2.8",
+    "typescript": "^5.5.4"
+  },
+  "mocha": {
+    "recursive": true,
+    "spec": "bin/test/",
+    "color": true
+  }
+}
