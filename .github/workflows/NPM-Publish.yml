@@ -151,7 +151,6 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
-          cache: npm
           scope: shi-corp
 
       # Download the compiled server binary
