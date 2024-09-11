@@ -33,23 +33,22 @@
   },
   "homepage": "https://github.com/Software-Hardware-Integration-Lab/Common-Utilities#readme",
   "dependencies": {
-    "@stylistic/eslint-plugin": "^2.7.2",
-    "eslint": ">=9.9.1",
+    "@stylistic/eslint-plugin": "^2.8.0",
+    "eslint": ">=9.10.0",
     "eslint-plugin-jsdoc": "^50.2.2",
-    "typescript-eslint": "^8.4.0"
+    "typescript-eslint": "^8.5.0"
   },
   "peerDependencies": {
     "eslint": ">=9.9.1"
   },
   "devDependencies": {
     "@types/chai": "^4.3.19",
-    "@types/eslint": "^9.6.1",
     "@types/eslint__js": "^8.42.3",
     "@types/mocha": "^10.0.7",
     "chai": "^5.1.1",
     "mocha": "^10.7.3",
     "next": "^14.2.8",
-    "typescript": "^5.5.4"
+    "typescript": "^5.6.2"
   },
   "mocha": {
     "recursive": true,
