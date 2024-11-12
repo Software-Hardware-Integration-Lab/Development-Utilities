@@ -4,11 +4,6 @@ import { NextConfig } from 'next';
  * An object that represents collection of settings to define behavior of Next.js application.
  */
 export const nextConfig: NextConfig = {
-    // Disable client side render warning, since this whole project is CSR mode.
-    'experimental': {
-        'missingSuspenseWithCSRBailout': false
-    },
-
     // Render as static HTML
     'output': 'export',
 
