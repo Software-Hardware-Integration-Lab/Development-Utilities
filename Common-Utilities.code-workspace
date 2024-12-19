@@ -17,9 +17,9 @@
 			"plusplus",
 			"tseslint"
 		],
-		"cSpell.enableFiletypes": [
-			"github-actions-workflow"
-		],
+		"cSpell.enabledFileTypes": {
+			"*": true,
+		},
 		"editor.formatOnSave": true,
 		"editor.bracketPairColorization.enabled": true,
 		"typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
