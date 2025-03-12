@@ -30,8 +30,6 @@ export const eslintConfig = tseslint.config(
         'linterOptions': { 'reportUnusedDisableDirectives': true },
         'plugins': {
             jsdoc,
-
-            // @ts-expect-error Exported types are not perfectly compatible, open issue https://github.com/eslint-stylistic/eslint-stylistic/issues/506
             stylistic
         },
         'rules': {
