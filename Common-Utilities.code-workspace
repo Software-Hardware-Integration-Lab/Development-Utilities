@@ -17,9 +17,9 @@
 			"plusplus",
 			"tseslint"
 		],
-		"cSpell.enableFiletypes": [
-			"github-actions-workflow"
-		],
+		"cSpell.enabledFileTypes": {
+			"*": true,
+		},
 		"editor.formatOnSave": true,
 		"editor.bracketPairColorization.enabled": true,
 		"typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
@@ -43,7 +43,8 @@
 		"files.trimFinalNewlines": true,
 		"yaml.format.singleQuote": true,
 		"powershell.codeFormatting.useConstantStrings": true,
-		"typescript.tsdk": "node_modules\\typescript\\lib"
+		"typescript.tsdk": "node_modules\\typescript\\lib",
+		"github.copilot.editor.enableAutoCompletions": false
 	},
 	"extensions": {
 		"recommendations": [
