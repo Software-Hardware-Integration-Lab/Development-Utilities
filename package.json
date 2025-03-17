@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/Software-Hardware-Integration-Lab/Common-Utilities#readme",
   "dependencies": {
-    "@stylistic/eslint-plugin": "~2.12.1",
+    "@stylistic/eslint-plugin": "~4.2.0",
     "eslint": ">=9.17.0",
     "eslint-plugin-jsdoc": "~50.6.1",
     "typescript-eslint": "~8.18.1"
