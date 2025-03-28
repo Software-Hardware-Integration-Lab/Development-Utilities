@@ -1,4 +1,4 @@
-import { NextConfig } from 'next';
+import type { NextConfig } from 'next';
 
 /**
  * An object that represents collection of settings to define behavior of Next.js application.
