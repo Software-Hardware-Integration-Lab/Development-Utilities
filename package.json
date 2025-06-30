@@ -36,7 +36,7 @@
     "@stylistic/eslint-plugin": "~4.2.0",
     "eslint": "~9.24.0",
     "eslint-plugin-jsdoc": "~50.6.9",
-    "typescript-eslint": "~8.29.0"
+    "typescript-eslint": "~8.35.1"
   },
   "devDependencies": {
     "@types/chai": "~5.2.1",
