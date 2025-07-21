@@ -278,11 +278,11 @@ export const eslintConfig = tseslint.config(
             'stylistic/computed-property-spacing': 'warn',
             'stylistic/dot-location': 'warn',
             'stylistic/eol-last': 'warn',
-            'stylistic/func-call-spacing': 'warn',
             'stylistic/function-call-argument-newline': [
                 'warn',
                 'consistent'
             ],
+            'stylistic/function-call-spacing': 'warn',
             'stylistic/function-paren-newline': 'warn',
             'stylistic/generator-star-spacing': 'warn',
             'stylistic/implicit-arrow-linebreak': 'warn',
