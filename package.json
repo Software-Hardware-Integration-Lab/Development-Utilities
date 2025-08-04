@@ -46,7 +46,7 @@
     "chai": "~5.2.1",
     "mocha": "~11.7.1",
     "next": "~15.4.5",
-    "typescript": "~5.8.2"
+    "typescript": "~5.9.2"
   },
   "mocha": {
     "recursive": true,
