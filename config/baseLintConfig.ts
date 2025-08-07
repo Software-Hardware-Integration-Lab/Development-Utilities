@@ -172,7 +172,12 @@ export const eslintConfig = tseslint.config(
             'no-invalid-this': 'off',
             'no-iterator': 'warn',
             'no-label-var': 'warn',
-            'no-labels': 'warn',
+            'no-labels': [
+                'warn',
+                {
+                    'allowLoop': true
+                }
+            ],
             'no-lone-blocks': 'warn',
             'no-lonely-if': 'warn',
             'no-loop-func': 'off',
