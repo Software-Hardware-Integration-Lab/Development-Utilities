@@ -66,7 +66,12 @@ export const eslintConfig = tseslint.config(
             '@typescript-eslint/prefer-destructuring': 'warn',
             '@typescript-eslint/prefer-promise-reject-errors': 'warn',
             '@typescript-eslint/require-await': 'warn',
-            '@typescript-eslint/restrict-template-expressions': ['warn', { 'allowNumber': true }],
+            '@typescript-eslint/restrict-template-expressions': [
+                'warn',
+                {
+                    'allowNumber': true
+                }
+            ],
             'accessor-pairs': 'warn',
             'array-callback-return': 'warn',
             'arrow-body-style': 'warn',
@@ -281,7 +286,10 @@ export const eslintConfig = tseslint.config(
             'stylistic/comma-spacing': 'warn',
             'stylistic/comma-style': 'warn',
             'stylistic/computed-property-spacing': 'warn',
-            'stylistic/dot-location': 'warn',
+            'stylistic/dot-location': [
+                'warn',
+                'property'
+            ],
             'stylistic/eol-last': 'warn',
             'stylistic/function-call-argument-newline': [
                 'warn',
