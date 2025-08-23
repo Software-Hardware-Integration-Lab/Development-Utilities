@@ -34,7 +34,7 @@
   "homepage": "https://github.com/Software-Hardware-Integration-Lab/Common-Utilities#readme",
   "dependencies": {
     "@stylistic/eslint-plugin": "~5.2.3",
-    "eslint": "~9.33.0",
+    "eslint": "~9.34.0",
     "eslint-plugin-jsdoc": "~54.1.1",
     "typescript-eslint": "~8.40.0"
   },
@@ -43,7 +43,7 @@
     "@types/chai": "~5.2.2",
     "@types/eslint": "~9.6.1",
     "@types/mocha": "~10.0.10",
-    "chai": "~5.3.1",
+    "chai": "~6.0.1",
     "mocha": "~11.7.1",
     "next": "~15.5.0",
     "typescript": "~5.9.2"
