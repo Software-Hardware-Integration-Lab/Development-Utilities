@@ -17,6 +17,10 @@ jobs:
     # Configures the filter for which operating system that should be used when selecting runners
     runs-on: ubuntu-latest
 
+    # Sets the scopes available to the github_token injected to the GH Actions runner
+    permissions:
+      contents: read
+
     # Set of commands to run for the build job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE
