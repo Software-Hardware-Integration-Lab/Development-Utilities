@@ -1,5 +1,5 @@
 {
-  "name": "@shi-corp/common-utilities",
+  "name": "@shi-corp/development-utilities",
   "version": "1.0.4",
   "description": "Collection of configurations, settings and packages to be common across multiple products/repositories.",
   "main": "bin/index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Software-Hardware-Integration-Lab/Common-Utilities"
+    "url": "https://github.com/Software-Hardware-Integration-Lab/Development-Utilities"
   },
   "keywords": [
     "ESLint",
@@ -29,9 +29,9 @@
   "author": "Pasha Zayko <pasha_zayko@shi.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Software-Hardware-Integration-Lab/Common-Utilities/issues"
+    "url": "https://github.com/Software-Hardware-Integration-Lab/Development-Utilities/issues"
   },
-  "homepage": "https://github.com/Software-Hardware-Integration-Lab/Common-Utilities#readme",
+  "homepage": "https://github.com/Software-Hardware-Integration-Lab/Development-Utilities#readme",
   "dependencies": {
     "@stylistic/eslint-plugin": "~5.2.3",
     "eslint": "~9.34.0",
