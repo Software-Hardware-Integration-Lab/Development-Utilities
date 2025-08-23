@@ -1,22 +1,32 @@
-# Common Utilities [![Unit Test](https://github.com/Software-Hardware-Integration-Lab/Common-Utilities/actions/workflows/Unit-Test.yml/badge.svg)](https://github.com/Software-Hardware-Integration-Lab/Common-Utilities/actions/workflows/Unit-Test.yml) [![Lint Check](https://github.com/Software-Hardware-Integration-Lab/Common-Utilities/actions/workflows/Lint.yml/badge.svg)](https://github.com/Software-Hardware-Integration-Lab/Common-Utilities/actions/workflows/Lint.yml) [![CodeQL](https://github.com/Software-Hardware-Integration-Lab/Common-Utilities/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Software-Hardware-Integration-Lab/Common-Utilities/actions/workflows/github-code-scanning/codeql)
+# Development Utilities [![Unit Test](https://github.com/Software-Hardware-Integration-Lab/Development-Utilities/actions/workflows/Unit-Test.yml/badge.svg)](https://github.com/Software-Hardware-Integration-Lab/Development-Utilities/actions/workflows/Unit-Test.yml) [![Lint Check](https://github.com/Software-Hardware-Integration-Lab/Development-Utilities/actions/workflows/Lint.yml/badge.svg)](https://github.com/Software-Hardware-Integration-Lab/Development-Utilities/actions/workflows/Lint.yml) [![CodeQL](https://github.com/Software-Hardware-Integration-Lab/Development-Utilities/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Software-Hardware-Integration-Lab/Development-Utilities/actions/workflows/github-code-scanning/codeql)
 
-This project is a collection of configurations to establish some baseline behavior for your TypeScript, linting preferences, etc.
+Shared development-time configurations for TypeScript, ESLint (flat config), and Next.js. These utilities are dev-only and should not ship with application runtime artifacts.
 
 These configurations are not exhaustive and might require bespoke changes once extended or included in your target repo (based on the configuration used).
 
-## tsconfig configuration
+## Installation
+
+```bash
+npm install --save-dev @shi-corp/development-utilities
+```
+
+### Note
+
+Do not import anything from this package in production/runtime code.
+
+## TS Config configuration
 
 Since it is not a code but just configuration file, it would require particular handling to use:
 
 in tsconfig.json make these changes
 
-```json
+```jsonc
 {
-  "extends": "./node_modules/@shi-corp/common-utilities/config/baseTsConfig.json",
+  "extends": "@shi-corp/development-utilities/config/baseTsConfig.json",
   "compilerOptions": {
-    "outDir": "<location of the output folder for your project, if it is used>"
+    "outDir": "./bin" // Adjust for your project
   }
-  ... // any other options that need to override base behavior
+  // ... Any other options that need to override base behavior
 }
 ```
 
@@ -26,12 +36,12 @@ This project is using flat file for eslint (best results achieved with version >
 
 in eslint.config.(m)js make these changes
 
-```js
-import { eslintConfig } from '@shi-corp/common-utilities';
+```JavaScript
+import { eslintConfig } from '@shi-corp/development-utilities';
 
 export default [
     ...eslintConfig,
-    <any other configuration that is specific to you project (excludes, different rules, etc.)>
+    // Add project-specific rules, ignores, or plugins here
 ];
 ```
 
@@ -39,11 +49,28 @@ export default [
 
 in next.config.(m)js make these changes
 
-```js
-import { nextConfig } from '@shi-corp/common-utilities';
+```JavaScript
+import { nextConfig } from '@shi-corp/development-utilities';
 
 export default {
   ...nextConfig,
   ... // any other options that need to override base behavior
 };
 ```
+
+## Scope and intent
+
+- Dev-only: configurations used for authoring, linting, and building. They should not be bundled into final application artifacts.
+- Centralized defaults: opinionated baselines to standardize behavior across repos.
+- Opt-in overrides: extend and override per project as needed.
+
+## Compatibility
+
+- Node.JS (Latest LTS)
+- ES Lint >= 9.40
+- TypeScript >= 5.9
+- Next.JS >= 15 (only if using the provided next config)
+
+## License
+
+MIT
