@@ -19,7 +19,7 @@ jobs:
       contents: read
 
     # Execute the workflow
-    uses: ./.github/workflows/Unit-Test.yml
+    uses: ./.github/workflows/Test-Unit.yml
 
   # Ensure that our code standards are met before deploying
   Test-Lint:
@@ -31,7 +31,7 @@ jobs:
       contents: read
 
     # Execute the workflow
-    uses: ./.github/workflows/Lint.yml
+    uses: ./.github/workflows/Test-Lint.yml
 
   # Execution session that builds and runs tests/linting on the code one more time
   Build-Artifact:

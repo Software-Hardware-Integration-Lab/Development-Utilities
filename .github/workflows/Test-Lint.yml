@@ -28,6 +28,7 @@ jobs:
         permissions:
           contents: read
 
+        # Set of steps to run to lint the project
         steps:
             # Checks-out your repository under $GITHUB_WORKSPACE
             - uses: actions/checkout@v5
