@@ -47,6 +47,14 @@
     "next": "~15.5.0",
     "typescript": "~5.9.2"
   },
+  "overrides": {
+    "is-unicode-supported": "npm:@socketregistry/is-unicode-supported@^1",
+    "safe-buffer": "npm:@socketregistry/safe-buffer@^1"
+  },
+  "resolutions": {
+    "is-unicode-supported": "npm:@socketregistry/is-unicode-supported@^1",
+    "safe-buffer": "npm:@socketregistry/safe-buffer@^1"
+  },
   "mocha": {
     "recursive": true,
     "spec": "bin/test/",
