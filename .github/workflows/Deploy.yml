@@ -12,7 +12,7 @@ jobs:
   # Ensure that there are no obvious bugs before deploying
   Test-Unit:
     # Display name of the job
-    name: Unit Test Artifact
+    name: Unit Test Project
 
     # Sets the scopes available to the github_token injected to the GH Actions runner
     permissions:
@@ -24,7 +24,7 @@ jobs:
   # Ensure that our code standards are met before deploying
   Test-Lint:
     # Display name of the job
-    name: Lint Artifact
+    name: Lint Project
 
     # Sets the scopes available to the github_token injected to the GH Actions runner
     permissions:
