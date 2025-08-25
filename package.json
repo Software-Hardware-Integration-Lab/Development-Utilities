@@ -1,6 +1,6 @@
 {
   "name": "@shi-corp/development-utilities",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Collection of configurations, settings and packages to be common across multiple products/repositories.",
   "main": "bin/index.js",
   "type": "module",
