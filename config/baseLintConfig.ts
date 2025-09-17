@@ -58,6 +58,7 @@ export const eslintConfig = tseslint.config(
             '@typescript-eslint/no-unused-vars': [
                 'warn',
                 {
+                    'argsIgnorePattern': '^_',
                     'caughtErrors': 'none'
                 }
             ],
@@ -343,7 +344,14 @@ export const eslintConfig = tseslint.config(
             'stylistic/no-mixed-operators': 'warn',
             'stylistic/no-mixed-spaces-and-tabs': 'warn',
             'stylistic/no-multi-spaces': 'warn',
-            'stylistic/no-multiple-empty-lines': 'warn',
+            'stylistic/no-multiple-empty-lines': [
+                'warn',
+                {
+                    'max': 1,
+                    'maxBOF': 0,
+                    'maxEOF': 1
+                }
+            ],
             'stylistic/no-tabs': 'warn',
             'stylistic/no-trailing-spaces': 'warn',
             'stylistic/no-whitespace-before-property': 'warn',
