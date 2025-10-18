@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/Software-Hardware-Integration-Lab/Development-Utilities#readme",
   "dependencies": {
+    "@eslint/js": "~9.38.0",
     "@stylistic/eslint-plugin": "~5.5.0",
     "eslint": "~9.38.0",
     "eslint-plugin-jsdoc": "~61.1.4",
