@@ -45,6 +45,12 @@
 		"yaml.format.singleQuote": true,
 		"powershell.codeFormatting.useConstantStrings": true,
 		"typescript.tsdk": "node_modules\\typescript\\lib",
+		"eslint.rules.customizations": [
+			{
+				"rule": "*",
+				"severity": "warn"
+			}
+		],
 		"github.copilot.enable": {
 			"*": false
 		}
