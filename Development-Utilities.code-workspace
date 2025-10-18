@@ -45,7 +45,9 @@
 		"yaml.format.singleQuote": true,
 		"powershell.codeFormatting.useConstantStrings": true,
 		"typescript.tsdk": "node_modules\\typescript\\lib",
-		"github.copilot.editor.enableAutoCompletions": false
+		"github.copilot.enable": {
+			"*": false
+		}
 	},
 	"extensions": {
 		"recommendations": [
