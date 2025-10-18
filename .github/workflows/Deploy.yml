@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Require the test step to complete before creating the artifact
-    needs: [ Test-Unit, Test-Lint ]
+    needs: [Test-Unit, Test-Lint]
 
     # Sets the scopes available to the github_token injected to the GH Actions runner
     permissions:
@@ -58,7 +58,7 @@ jobs:
 
       # Set up NodeJS on the build host with caching support to optimize execution
       - name: Setup Node.JS Runtime
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: npm
@@ -78,7 +78,7 @@ jobs:
 
       # Create an attestation for the compiled package and upload it to the internal system for health tracking
       - name: Attest Compiled Package
-        uses: actions/attest-build-provenance@v2
+        uses: actions/attest-build-provenance@v3
         with:
           subject-path: package.zip
 
@@ -116,7 +116,7 @@ jobs:
     steps:
       # Set up NodeJS on the build host with caching support to optimize execution
       - name: Set up Node.JS Runtime
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org
