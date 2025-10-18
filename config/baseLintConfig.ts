@@ -1,31 +1,40 @@
+import { defineConfig } from 'eslint/config';
 import eslint from '@eslint/js';
 import globals from 'globals';
 import jsdoc from 'eslint-plugin-jsdoc';
 import stylistic from '@stylistic/eslint-plugin';
 import tseslint from 'typescript-eslint';
 
-/**
- * Array of configuration objects merged together to form baseline for linting of the code.
- */
-export const eslintConfig = tseslint.config(
+/** Array of configuration objects merged together to form baseline for linting of the code. */
+export const eslintConfig = defineConfig(
     eslint.configs.recommended,
     jsdoc.configs['flat/recommended-typescript'],
     ...tseslint.configs.strictTypeChecked,
     ...tseslint.configs.stylisticTypeChecked,
     {
-        'ignores': ['eslint.config.mjs']
+        'ignores': [
+            'eslint.config.mjs',
+            'eslint.config.js',
+            'next.config.mjs',
+            'next.config.js',
+            'jest.config.mjs',
+            'node_modules/',
+            'bin/',
+            'dist/',
+            'out/',
+            'build/',
+            '.next/',
+            'next-env.d.ts'
+        ]
     },
     {
         'languageOptions': {
             'globals': {
-                ...globals.browser,
                 ...globals.mocha,
                 ...globals.node,
                 ...globals.es2021
             },
-            'parserOptions': {
-                'projectService': true
-            }
+            'parserOptions': { 'projectService': true }
         },
         'linterOptions': { 'reportUnusedDisableDirectives': true },
         'plugins': {
