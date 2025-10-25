@@ -53,7 +53,20 @@
 		],
 		"github.copilot.enable": {
 			"*": false
-		}
+		},
+		"github.copilot.chat.agent.autoFix": false,
+		"github.copilot.chat.agent.runTasks": false,
+		"github.copilot.editor.enableCodeActions": false,
+		"todo-tree.general.tags": [
+			"BUG",
+			"HACK",
+			"FIXME",
+			"TODO",
+			"XXX",
+			"[ ]",
+			"[x]",
+			"* @todo"
+		]
 	},
 	"extensions": {
 		"recommendations": [
@@ -61,7 +74,8 @@
 			"dbaeumer.vscode-eslint",
 			"gruntfuggly.todo-tree",
 			"PKief.material-icon-theme",
-			"SocketSecurity.vscode-socket-security"
+			"SocketSecurity.vscode-socket-security",
+			"MS-CST-E.vscode-devskim"
 		]
 	}
 }
