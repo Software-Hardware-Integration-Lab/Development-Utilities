@@ -22,7 +22,7 @@ in tsconfig.json make these changes
 
 ```jsonc
 {
-  "extends": "@shi-corp/development-utilities/config/baseTsConfig.json",
+  "extends": "@shi-corp/development-utilities/config/typescript/baseTsConfig.json",
   "compilerOptions": {
     "outDir": "./bin" // Adjust for your project
   }
@@ -34,13 +34,26 @@ in tsconfig.json make these changes
 
 This project is using flat file for eslint (best results achieved with version >=9.9.0) and the intention to be compatible with that style only:
 
-in eslint.config.(m)js make these changes
+In `eslint.config.(m)js` make these changes:
 
-```JavaScript
-import { eslintConfig } from '@shi-corp/development-utilities';
+### Normal (Non-UI)
+
+```TypeScript
+import { baseLintConfig } from '@shi-corp/development-utilities';
 
 export default [
-    ...eslintConfig,
+    ...baseLintConfig,
+    // Add project-specific rules, ignores, or plugins here
+];
+```
+
+### User Interface (Next.JS)
+
+```TypeScript
+import { baseLintConfig } from '@shi-corp/development-utilities';
+
+export default [
+    ...nextLintConfig,
     // Add project-specific rules, ignores, or plugins here
 ];
 ```
@@ -49,7 +62,7 @@ export default [
 
 in next.config.(m)js make these changes
 
-```JavaScript
+```TypeScript
 import { nextConfig } from '@shi-corp/development-utilities';
 
 export default {
@@ -67,9 +80,9 @@ export default {
 ## Compatibility
 
 - Node.JS (Latest LTS)
-- ES Lint >= 9.40
+- ES Lint >= 9.38.0
 - TypeScript >= 5.9
-- Next.JS >= 15 (only if using the provided next config)
+- Next.JS >= 16 (only if using the provided next config)
 
 ## License
 
