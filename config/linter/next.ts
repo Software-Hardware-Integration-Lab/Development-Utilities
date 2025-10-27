@@ -1,5 +1,5 @@
+import { defineConfig, globalIgnores } from 'eslint/config';
 import { eslintConfig as baselineConfig } from './base.js';
-import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -18,4 +18,13 @@ export const eslintConfig = defineConfig([
     react.configs.flat['jsx-runtime'],
     reactHooks.configs.flat.recommended,
     ...(nextVitals as ReturnType<typeof defineConfig>),
+    globalIgnores([
+        'next.config.mjs',
+        'next.config.js',
+        'next-env.d.ts',
+        '.next/**',
+        'out/**',
+        'build/**',
+        'jest.config.mjs'
+    ])
 ]);

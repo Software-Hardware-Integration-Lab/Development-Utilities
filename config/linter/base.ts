@@ -11,14 +11,6 @@ export const eslintConfig = defineConfig(
     jsdoc.configs['flat/recommended-typescript'],
     ...tseslint.configs.strictTypeChecked,
     ...tseslint.configs.stylisticTypeChecked,
-    globalIgnores([
-        'node_modules/',
-        'eslint.config.mjs',
-        'eslint.config.js',
-        'jest.config.mjs',
-        'bin/',
-        'dist/'
-    ]),
     {
         'languageOptions': {
             'globals': {
@@ -473,5 +465,12 @@ export const eslintConfig = defineConfig(
                 'contexts': ['TSInterfaceDeclaration']
             }
         }
-    }
+    },
+    globalIgnores([
+        'node_modules/',
+        'eslint.config.mjs',
+        'eslint.config.js',
+        'bin/',
+        'dist/'
+    ])
 );
