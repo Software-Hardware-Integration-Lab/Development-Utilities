@@ -1,82 +1,82 @@
 {
-  "name": "@shi-corp/development-utilities",
-  "version": "2.0.0",
-  "description": "Collection of configurations, settings and packages to be common across multiple products/repositories.",
-  "main": "bin/index.js",
-  "type": "module",
-  "scripts": {
-    "build:Dev": "tsc",
-    "prebuild:Prod": "tsc -p prod.tsconfig.json --emitDeclarationOnly false",
-    "build:Prod": "tsc -p prod.tsconfig.json --removeComments false",
-    "lint": "eslint --max-warnings 0",
-    "test:Unit": "mocha"
-  },
-  "packageManager": "npm@11.6.2",
-  "devEngines": {
-    "runtime": {
-      "name": "node",
-      "version": ">=22.17.0",
-      "onFail": "error"
+    "name": "@shi-corp/development-utilities",
+    "version": "2.0.0",
+    "description": "Collection of configurations, settings and packages to be common across multiple products/repositories.",
+    "main": "bin/index.js",
+    "type": "module",
+    "scripts": {
+        "build:Dev": "tsc",
+        "prebuild:Prod": "tsc -p prod.tsconfig.json --emitDeclarationOnly false",
+        "build:Prod": "tsc -p prod.tsconfig.json --removeComments false",
+        "lint": "eslint --max-warnings 0",
+        "test:Unit": "mocha"
     },
-    "packageManager": {
-      "name": "npm",
-      "onFail": "error"
+    "packageManager": "npm@11.6.2",
+    "devEngines": {
+        "runtime": {
+            "name": "node",
+            "version": ">=22.17.0",
+            "onFail": "error"
+        },
+        "packageManager": {
+            "name": "npm",
+            "onFail": "error"
+        }
+    },
+    "engines": {
+        "node": ">=22.17.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Software-Hardware-Integration-Lab/Development-Utilities"
+    },
+    "keywords": [
+        "ESLint",
+        "config",
+        "lint",
+        "standardization",
+        "JSDoc",
+        "Stylistic",
+        "TypeScript",
+        "tsconfig",
+        "Next.js config"
+    ],
+    "author": "Pasha Zayko <pasha_zayko@shi.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Software-Hardware-Integration-Lab/Development-Utilities/issues"
+    },
+    "homepage": "https://github.com/Software-Hardware-Integration-Lab/Development-Utilities#readme",
+    "dependencies": {
+        "@eslint/js": "~9.38.0",
+        "@stylistic/eslint-plugin": "~5.5.0",
+        "eslint": "~9.38.0",
+        "eslint-config-next": "~16.0.0",
+        "eslint-plugin-jsdoc": "~61.1.9",
+        "eslint-plugin-react": "~7.37.5",
+        "eslint-plugin-react-hooks": "~7.0.1",
+        "typescript-eslint": "~8.46.2"
+    },
+    "devDependencies": {
+        "@types/chai": "~5.2.3",
+        "@types/eslint": "~9.6.1",
+        "@types/mocha": "~10.0.10",
+        "chai": "~6.2.0",
+        "mocha": "~11.7.4",
+        "next": "~16.0.0",
+        "typescript": "~5.9.3"
+    },
+    "overrides": {
+        "is-unicode-supported": "npm:@socketregistry/is-unicode-supported@^1",
+        "safe-buffer": "npm:@socketregistry/safe-buffer@^1"
+    },
+    "resolutions": {
+        "is-unicode-supported": "npm:@socketregistry/is-unicode-supported@^1",
+        "safe-buffer": "npm:@socketregistry/safe-buffer@^1"
+    },
+    "mocha": {
+        "recursive": true,
+        "spec": "bin/test/",
+        "color": true
     }
-  },
-  "engines": {
-    "node": ">=22.17.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Software-Hardware-Integration-Lab/Development-Utilities"
-  },
-  "keywords": [
-    "ESLint",
-    "config",
-    "lint",
-    "standardization",
-    "JSDoc",
-    "Stylistic",
-    "TypeScript",
-    "tsconfig",
-    "Next.js config"
-  ],
-  "author": "Pasha Zayko <pasha_zayko@shi.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Software-Hardware-Integration-Lab/Development-Utilities/issues"
-  },
-  "homepage": "https://github.com/Software-Hardware-Integration-Lab/Development-Utilities#readme",
-  "dependencies": {
-    "@eslint/js": "~9.38.0",
-    "@stylistic/eslint-plugin": "~5.5.0",
-    "eslint": "~9.38.0",
-    "eslint-config-next": "~16.0.0",
-    "eslint-plugin-jsdoc": "~61.1.9",
-    "eslint-plugin-react": "~7.37.5",
-    "eslint-plugin-react-hooks": "~7.0.1",
-    "typescript-eslint": "~8.46.2"
-  },
-  "devDependencies": {
-    "@types/chai": "~5.2.3",
-    "@types/eslint": "~9.6.1",
-    "@types/mocha": "~10.0.10",
-    "chai": "~6.2.0",
-    "mocha": "~11.7.4",
-    "next": "~16.0.0",
-    "typescript": "~5.9.3"
-  },
-  "overrides": {
-    "is-unicode-supported": "npm:@socketregistry/is-unicode-supported@^1",
-    "safe-buffer": "npm:@socketregistry/safe-buffer@^1"
-  },
-  "resolutions": {
-    "is-unicode-supported": "npm:@socketregistry/is-unicode-supported@^1",
-    "safe-buffer": "npm:@socketregistry/safe-buffer@^1"
-  },
-  "mocha": {
-    "recursive": true,
-    "spec": "bin/test/",
-    "color": true
-  }
 }
