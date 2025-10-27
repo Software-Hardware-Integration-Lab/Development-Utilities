@@ -1,4 +1,4 @@
-import { defineConfig } from 'eslint/config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import eslint from '@eslint/js';
 import globals from 'globals';
 import jsdoc from 'eslint-plugin-jsdoc';
@@ -11,22 +11,14 @@ export const eslintConfig = defineConfig(
     jsdoc.configs['flat/recommended-typescript'],
     ...tseslint.configs.strictTypeChecked,
     ...tseslint.configs.stylisticTypeChecked,
-    {
-        'ignores': [
-            'eslint.config.mjs',
-            'eslint.config.js',
-            'next.config.mjs',
-            'next.config.js',
-            'jest.config.mjs',
-            'node_modules/',
-            'bin/',
-            'dist/',
-            'out/',
-            'build/',
-            '.next/',
-            'next-env.d.ts'
-        ]
-    },
+    globalIgnores([
+        'node_modules/',
+        'eslint.config.mjs',
+        'eslint.config.js',
+        'jest.config.mjs',
+        'bin/',
+        'dist/'
+    ]),
     {
         'languageOptions': {
             'globals': {
