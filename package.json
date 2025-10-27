@@ -11,6 +11,15 @@
         "lint": "eslint --max-warnings 0",
         "test:Unit": "mocha"
     },
+    "exports": {
+        ".": {
+            "import": "./bin/src/index.js"
+        },
+        "./optimized/lint/*.js": {
+            "import": "./bin/config/linter/*.js"
+        },
+        "./config/typescript/*.json": "./config/typescript/*.json"
+    },
     "packageManager": "npm@11.6.2",
     "devEngines": {
         "runtime": {
