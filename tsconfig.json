@@ -1,5 +1,5 @@
 {
-    "extends": "./config/typescript/baseTsConfig.json",
+    "extends": "./config/typescript/base.json",
     "compilerOptions": {
         "outDir": "./bin", /* Specify an output folder for all emitted files. */
         "declaration": true, /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
