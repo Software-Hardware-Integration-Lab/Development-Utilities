@@ -3,53 +3,53 @@ name: Dynamic Analysis - Unit Test
 
 # When this workflow triggers
 on:
-  # Run the unit tests on every change
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    # Run the unit tests on every change
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
 
-  # Allows you to run this workflow from other workflows as a library/unit of reusable code
-  workflow_call:
+    # Allows you to run this workflow from other workflows as a library/unit of reusable code
+    workflow_call:
 
 # Define each session of execution that should be executed
 jobs:
-  Test:
-    # Display name of the job
-    name: Code Unit Test
+    Test:
+        # Display name of the job
+        name: Code Unit Test
 
-    # Operating system filter for the runners
-    runs-on: ubuntu-latest
+        # Operating system filter for the runners
+        runs-on: ubuntu-latest
 
-    # Sets the scopes available to the github_token injected to the GH Actions runner
-    permissions:
-      contents: read
+        # Sets the scopes available to the github_token injected to the GH Actions runner
+        permissions:
+            contents: read
 
-    # Set of execution steps to perform
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE
-      - name: Download Source Code
-        uses: actions/checkout@v5
+        # Set of execution steps to perform
+        steps:
+            # Checks-out your repository under $GITHUB_WORKSPACE
+            - name: Download Source Code
+              uses: actions/checkout@v5
 
-      # Set up NodeJS on the build host
-      - name: Set up the Node.JS Runtime
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: package-lock.json
+            # Set up NodeJS on the build host
+            - name: Set up the Node.JS Runtime
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22
+                  cache: npm
+                  cache-dependency-path: package-lock.json
 
-      # Install all of the dependencies
-      - name: Clean Install of the Project Dependencies
-        run: npm install
+            # Install all of the dependencies
+            - name: Clean Install of the Project Dependencies
+              run: npm install
 
-      # Compile the Typescript files to JS
-      - name: Build Project
-        run: npm run-script build:Dev
+            # Compile the Typescript files to JS
+            - name: Build Project
+              run: npm run-script build:Dev
 
-      # Run all the existing unit tests
-      - name: Run the Unit Tests
-        run: npm run-script test:Unit
+            # Run all the existing unit tests
+            - name: Run the Unit Tests
+              run: npm run-script test:Unit

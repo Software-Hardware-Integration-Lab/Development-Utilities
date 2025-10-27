@@ -3,145 +3,145 @@ name: Publish NPM Package
 
 # When this workflow triggers
 on:
-  # Only when a release is published
-  release:
-    types: [released]
+    # Only when a release is published
+    release:
+        types: [released]
 
 # Define each session of execution that should be executed
 jobs:
-  # Ensure that there are no obvious bugs before deploying
-  Test-Unit:
-    # Display name of the job
-    name: Unit Test Project
+    # Ensure that there are no obvious bugs before deploying
+    Test-Unit:
+        # Display name of the job
+        name: Unit Test Project
 
-    # Sets the scopes available to the github_token injected to the GH Actions runner
-    permissions:
-      contents: read
+        # Sets the scopes available to the github_token injected to the GH Actions runner
+        permissions:
+            contents: read
 
-    # Execute the workflow
-    uses: ./.github/workflows/Test-Unit.yml
+        # Execute the workflow
+        uses: ./.github/workflows/Test-Unit.yml
 
-  # Ensure that our code standards are met before deploying
-  Test-Lint:
-    # Display name of the job
-    name: Lint Project
+    # Ensure that our code standards are met before deploying
+    Test-Lint:
+        # Display name of the job
+        name: Lint Project
 
-    # Sets the scopes available to the github_token injected to the GH Actions runner
-    permissions:
-      contents: read
+        # Sets the scopes available to the github_token injected to the GH Actions runner
+        permissions:
+            contents: read
 
-    # Execute the workflow
-    uses: ./.github/workflows/Test-Lint.yml
+        # Execute the workflow
+        uses: ./.github/workflows/Test-Lint.yml
 
-  # Execution session that builds and runs tests/linting on the code one more time
-  Build-Artifact:
-    # Display name of the job
-    name: Build Artifact
+    # Execution session that builds and runs tests/linting on the code one more time
+    Build-Artifact:
+        # Display name of the job
+        name: Build Artifact
 
-    # Configures the filter for which operating system that should be used when selecting runners
-    runs-on: ubuntu-latest
+        # Configures the filter for which operating system that should be used when selecting runners
+        runs-on: ubuntu-latest
 
-    # Require the test step to complete before creating the artifact
-    needs: [Test-Unit, Test-Lint]
+        # Require the test step to complete before creating the artifact
+        needs: [Test-Unit, Test-Lint]
 
-    # Sets the scopes available to the github_token injected to the GH Actions runner
-    permissions:
-      attestations: write
-      contents: read
-      id-token: write
+        # Sets the scopes available to the github_token injected to the GH Actions runner
+        permissions:
+            attestations: write
+            contents: read
+            id-token: write
 
-    # Set of commands to run for the build job
-    steps:
-      # Checks-out the repository under $GITHUB_WORKSPACE
-      - name: Clone Repo
-        uses: actions/checkout@v5
+        # Set of commands to run for the build job
+        steps:
+            # Checks-out the repository under $GITHUB_WORKSPACE
+            - name: Clone Repo
+              uses: actions/checkout@v5
 
-      # Set up NodeJS on the build host with caching support to optimize execution
-      - name: Setup Node.JS Runtime
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: package-lock.json
+            # Set up NodeJS on the build host with caching support to optimize execution
+            - name: Setup Node.JS Runtime
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22
+                  cache: npm
+                  cache-dependency-path: package-lock.json
 
-      # Install all of the dependencies
-      - name: Install All of the Project Dependencies
-        run: npm install
+            # Install all of the dependencies
+            - name: Install All of the Project Dependencies
+              run: npm install
 
-      # Compile the Typescript files to JS
-      - name: Build Project
-        run: npm run-script build:Prod
+            # Compile the Typescript files to JS
+            - name: Build Project
+              run: npm run-script build:Prod
 
-      # Create a ZIP archive of the server files to speed up the upload process
-      - name: Zip up Server Files
-        run: zip -r package.zip bin/ config/baseTsConfig.json LICENSE README.md package.json
+            # Create a ZIP archive of the server files to speed up the upload process
+            - name: Zip up Server Files
+              run: zip -r package.zip bin/ config/typescript/ LICENSE README.md package.json
 
-      # Create an attestation for the compiled package and upload it to the internal system for health tracking
-      - name: Attest Compiled Package
-        uses: actions/attest-build-provenance@v3
-        with:
-          subject-path: package.zip
+            # Create an attestation for the compiled package and upload it to the internal system for health tracking
+            - name: Attest Compiled Package
+              uses: actions/attest-build-provenance@v3
+              with:
+                  subject-path: package.zip
 
-      # Upload compiled zip file so that other execution sessions can use it
-      - name: Upload Artifact for Deployment Job
-        uses: actions/upload-artifact@v4
-        with:
-          compression-level: 9
-          if-no-files-found: error
-          name: Development-Utilities
-          path: package.zip
-          retention-days: 1
+            # Upload compiled zip file so that other execution sessions can use it
+            - name: Upload Artifact for Deployment Job
+              uses: actions/upload-artifact@v4
+              with:
+                  compression-level: 9
+                  if-no-files-found: error
+                  name: Development-Utilities
+                  path: package.zip
+                  retention-days: 1
 
-  # Execution Session that deploys the artifact to NPM
-  Deploy-NPM:
-    # Display name of the job
-    name: Deploy to NPM
+    # Execution Session that deploys the artifact to NPM
+    Deploy-NPM:
+        # Display name of the job
+        name: Deploy to NPM
 
-    # Configures the filter for which operating system that should be used when selecting runners
-    runs-on: ubuntu-latest
+        # Configures the filter for which operating system that should be used when selecting runners
+        runs-on: ubuntu-latest
 
-    # Require the build step to complete before running the deployment
-    needs: Build-Artifact
+        # Require the build step to complete before running the deployment
+        needs: Build-Artifact
 
-    # Sets the scopes available to the github_token injected to the GH Actions runner
-    permissions:
-      attestations: read
-      contents: none
-      id-token: write
+        # Sets the scopes available to the github_token injected to the GH Actions runner
+        permissions:
+            attestations: read
+            contents: none
+            id-token: write
 
-    # The deploy step runs in the Azure environment context
-    environment: NPM-OIDC
+        # The deploy step runs in the Azure environment context
+        environment: NPM-OIDC
 
-    # Set of commands to run for the build job
-    steps:
-      # Set up NodeJS on the build host with caching support to optimize execution
-      - name: Set up Node.JS Runtime
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          registry-url: https://registry.npmjs.org
-          scope: shi-corp
+        # Set of commands to run for the build job
+        steps:
+            # Set up NodeJS on the build host with caching support to optimize execution
+            - name: Set up Node.JS Runtime
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22
+                  registry-url: https://registry.npmjs.org
+                  scope: shi-corp
 
-      # Update the NPM CLI to the latest available version
-      - name: Update NPM CLI
-        run: npm install -g npm
+            # Update the NPM CLI to the latest available version
+            - name: Update NPM CLI
+              run: npm install -g npm
 
-      # Download the compiled server binary
-      - name: Download Artifact From Build Job
-        uses: actions/download-artifact@v5
-        with:
-          name: Development-Utilities
+            # Download the compiled server binary
+            - name: Download Artifact From Build Job
+              uses: actions/download-artifact@v5
+              with:
+                  name: Development-Utilities
 
-      # Validate the attestation of the downloaded artifact to prevent tamper
-      - name: Validate Attestation
-        env:
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        run: gh attestation verify package.zip --repo Software-Hardware-Integration-Lab/Development-Utilities --signer-workflow Software-Hardware-Integration-Lab/Development-Utilities/.github/workflows/Deploy.yml@refs/tags/${GITHUB_REF#refs/tags/}
+            # Validate the attestation of the downloaded artifact to prevent tamper
+            - name: Validate Attestation
+              env:
+                  GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+              run: gh attestation verify package.zip --repo Software-Hardware-Integration-Lab/Development-Utilities --signer-workflow Software-Hardware-Integration-Lab/Development-Utilities/.github/workflows/Deploy.yml@refs/tags/${GITHUB_REF#refs/tags/}
 
-      # Extract the zip file and remove the container
-      - name: Unzip Artifact
-        run: unzip package.zip && rm package.zip
+            # Extract the zip file and remove the container
+            - name: Unzip Artifact
+              run: unzip package.zip && rm package.zip
 
-      # Publish the artifact to NPM with attestation
-      - name: Upload Package to NPM Registry
-        run: npm publish
+            # Publish the artifact to NPM with attestation
+            - name: Upload Package to NPM Registry
+              run: npm publish

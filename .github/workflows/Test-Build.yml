@@ -3,48 +3,48 @@ name: Dynamic Analysis - Build Project
 
 # When this workflow triggers
 on:
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
 
-  # Allow this workflow to be called from another workflow
-  workflow_call:
+    # Allow this workflow to be called from another workflow
+    workflow_call:
 
-  # Run the linting checks on every change
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    # Run the linting checks on every change
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
 
 # Define each session of execution that should be executed
 jobs:
-  Build:
-    # Display name of the job
-    name: Test Build Project
+    Build:
+        # Display name of the job
+        name: Test Build Project
 
-    # Operating system filter for the runners
-    runs-on: ubuntu-latest
+        # Operating system filter for the runners
+        runs-on: ubuntu-latest
 
-    # Sets the scopes available to the github_token injected to the GH Actions runner
-    permissions:
-      contents: read
+        # Sets the scopes available to the github_token injected to the GH Actions runner
+        permissions:
+            contents: read
 
-    # Set of execution steps to perform
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE
-      - uses: actions/checkout@v5
+        # Set of execution steps to perform
+        steps:
+            # Checks-out your repository under $GITHUB_WORKSPACE
+            - uses: actions/checkout@v5
 
-      # Set up NodeJS on the build host
-      - name: Setup Node.JS Environment
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: package-lock.json
+            # Set up NodeJS on the build host
+            - name: Setup Node.JS Environment
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22
+                  cache: npm
+                  cache-dependency-path: package-lock.json
 
-      # Install all of the dependencies
-      - name: Install All of the Project Dependencies
-        run: npm install
+            # Install all of the dependencies
+            - name: Install All of the Project Dependencies
+              run: npm install
 
-      # Compile the Typescript files to JS
-      - name: Build Server
-        run: npm run-script build:Dev
+            # Compile the Typescript files to JS
+            - name: Build Server
+              run: npm run-script build:Dev
