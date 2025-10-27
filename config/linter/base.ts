@@ -31,9 +31,6 @@ export const eslintConfig = defineConfig(
             '@typescript-eslint/default-param-last': 'warn',
             '@typescript-eslint/explicit-function-return-type': 'warn',
             '@typescript-eslint/init-declarations': 'warn',
-            '@typescript-eslint/no-array-constructor': 'warn',
-            '@typescript-eslint/no-empty-function': 'warn',
-            '@typescript-eslint/no-implied-eval': 'warn',
             '@typescript-eslint/no-invalid-this': 'warn',
             '@typescript-eslint/no-loop-func': 'warn',
             '@typescript-eslint/no-misused-promises': [
@@ -47,7 +44,6 @@ export const eslintConfig = defineConfig(
             '@typescript-eslint/no-non-null-assertion': 'off',
             '@typescript-eslint/no-restricted-imports': 'warn',
             '@typescript-eslint/no-shadow': 'warn',
-            '@typescript-eslint/no-unused-expressions': 'warn',
             '@typescript-eslint/no-unused-vars': [
                 'warn',
                 {
@@ -56,10 +52,7 @@ export const eslintConfig = defineConfig(
                 }
             ],
             '@typescript-eslint/no-use-before-define': 'warn',
-            '@typescript-eslint/no-useless-constructor': 'warn',
             '@typescript-eslint/prefer-destructuring': 'warn',
-            '@typescript-eslint/prefer-promise-reject-errors': 'warn',
-            '@typescript-eslint/require-await': 'warn',
             '@typescript-eslint/restrict-template-expressions': [
                 'warn',
                 {
@@ -92,7 +85,6 @@ export const eslintConfig = defineConfig(
             'id-length': 'warn',
             'id-match': 'warn',
             'init-declarations': 'off',
-            'jsdoc/check-alignment': 'warn',
             'jsdoc/check-indentation': [
                 'warn',
                 {
@@ -140,8 +132,6 @@ export const eslintConfig = defineConfig(
                     }
                 }
             ],
-            'jsdoc/require-param': 'warn',
-            'jsdoc/valid-types': 'warn',
             'max-classes-per-file': 'warn',
             'max-depth': [
                 'warn',
@@ -150,7 +140,6 @@ export const eslintConfig = defineConfig(
             'max-nested-callbacks': 'warn',
             'new-cap': 'warn',
             'no-alert': 'warn',
-            'no-array-constructor': 'off',
             'no-bitwise': 'warn',
             'no-caller': 'warn',
             'no-console': 'warn',
@@ -159,7 +148,6 @@ export const eslintConfig = defineConfig(
             'no-div-regex': 'warn',
             'no-duplicate-imports': 'warn',
             'no-else-return': 'warn',
-            'no-empty-function': 'off',
             'no-eq-null': 'warn',
             'no-eval': 'warn',
             'no-extend-native': 'warn',
@@ -167,7 +155,6 @@ export const eslintConfig = defineConfig(
             'no-extra-label': 'warn',
             'no-implicit-coercion': 'warn',
             'no-implicit-globals': 'warn',
-            'no-implied-eval': 'off',
             'no-invalid-this': 'off',
             'no-iterator': 'warn',
             'no-label-var': 'warn',
@@ -208,23 +195,19 @@ export const eslintConfig = defineConfig(
             'no-sequences': 'warn',
             'no-shadow': 'off',
             'no-template-curly-in-string': 'warn',
-            'no-throw-literal': 'warn',
             'no-undef-init': 'warn',
             'no-undefined': 'warn',
             'no-underscore-dangle': 'warn',
             'no-unmodified-loop-condition': 'warn',
             'no-unneeded-ternary': 'warn',
             'no-unreachable-loop': 'warn',
-            'no-unused-expressions': 'off',
             'no-unused-vars': 'off',
             'no-use-before-define': 'off',
             'no-useless-call': 'warn',
             'no-useless-computed-key': 'warn',
             'no-useless-concat': 'warn',
-            'no-useless-constructor': 'off',
             'no-useless-rename': 'warn',
             'no-useless-return': 'warn',
-            'no-var': 'warn',
             'no-warning-comments': [
                 'warn',
                 {
@@ -241,20 +224,15 @@ export const eslintConfig = defineConfig(
             ],
             'operator-assignment': 'warn',
             'prefer-arrow-callback': 'warn',
-            'prefer-const': 'warn',
             'prefer-destructuring': 'off',
             'prefer-exponentiation-operator': 'warn',
             'prefer-named-capture-group': 'warn',
             'prefer-numeric-literals': 'warn',
             'prefer-object-spread': 'warn',
-            'prefer-promise-reject-errors': 'off',
             'prefer-regex-literals': 'warn',
-            'prefer-rest-params': 'warn',
-            'prefer-spread': 'warn',
             'prefer-template': 'warn',
             'radix': 'warn',
             'require-atomic-updates': 'warn',
-            'require-await': 'off',
             'require-unicode-regexp': 'warn',
             'sort-imports': 'warn',
             'sort-keys': 'warn',
@@ -293,6 +271,10 @@ export const eslintConfig = defineConfig(
             'stylistic/function-paren-newline': 'warn',
             'stylistic/generator-star-spacing': 'warn',
             'stylistic/implicit-arrow-linebreak': 'warn',
+            'stylistic/indent': [
+                'warn',
+                4
+            ],
             'stylistic/jsx-quotes': 'warn',
             'stylistic/key-spacing': 'warn',
             'stylistic/keyword-spacing': 'warn',
