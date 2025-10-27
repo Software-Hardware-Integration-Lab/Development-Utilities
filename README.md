@@ -39,23 +39,22 @@ In `eslint.config.(m)js` make these changes:
 ### Normal (Non-UI)
 
 ```TypeScript
-import { baseLintConfig } from '@shi-corp/development-utilities';
+import { eslintConfig } from '@shi-corp/development-utilities/optimized/lint/base.js'
+import { defineConfig } from 'eslint/config'
 
-export default [
-    ...baseLintConfig,
-    // Add project-specific rules, ignores, or plugins here
-];
+export default defineConfig(eslintConfig)
 ```
 
 ### User Interface (Next.JS)
 
 ```TypeScript
-import { baseLintConfig } from '@shi-corp/development-utilities';
+import { eslintConfig } from '@shi-corp/development-utilities/optimized/lint/next.js'
+import { defineConfig } from 'eslint/config'
 
-export default [
-    ...nextLintConfig,
+export default defineConfig([
+    ...eslintConfig,
     // Add project-specific rules, ignores, or plugins here
-];
+])
 ```
 
 ## Next.js configuration
