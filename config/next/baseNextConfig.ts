@@ -5,10 +5,7 @@ import type { NextConfig } from 'next';
  */
 export const nextConfig: NextConfig = {
     // Render as static HTML
-    'output': 'export',
-
-    // @todo Enable strict mode dev checks again when https://github.com/microsoft/use-disposable/issues/31 gets fixed.
-    'reactStrictMode': false
+    'output': 'export'
 
     /*
      * // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`

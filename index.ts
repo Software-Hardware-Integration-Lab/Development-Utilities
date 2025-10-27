@@ -1,8 +1,8 @@
 // Export baseline configuration for ESlint
-export { eslintConfig } from './config/baseLintConfig.js';
+export { eslintConfig as baseLintConfig } from './config/linter/base.js';
 
 // Export Next.js specific linting configuration
-export { nextLintConfig } from './config/nextLintConfig.js';
+export { eslintConfig as nextLintConfig } from './config/linter/next.js';
 
 // Export baseline configuration for Next.js
-export { nextConfig } from './config/baseNextConfig.js';
+export { nextConfig } from './config/next/baseNextConfig.js';

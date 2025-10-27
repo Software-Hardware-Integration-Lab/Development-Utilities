@@ -1,7 +1,7 @@
-import { eslintConfig } from './bin/index.js';
+import { baseLintConfig } from './bin/index.js';
 
 export default [
-    ...eslintConfig,
+    ...baseLintConfig,
     {
         'ignores': [
             'bin/'

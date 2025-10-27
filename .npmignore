@@ -1,6 +1,8 @@
 # Project files, only the built runtime files should be published
 /test
 bin/test
+config/**/*
+!config/typescript/**/*
 .vscode
 .github
 *.code-workspace
