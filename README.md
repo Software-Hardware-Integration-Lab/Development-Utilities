@@ -22,7 +22,7 @@ in tsconfig.json make these changes
 
 ```jsonc
 {
-  "extends": "@shi-corp/development-utilities/config/typescript/baseTsConfig.json",
+  "extends": "@shi-corp/development-utilities/config/typescript/base.json",
   "compilerOptions": {
     "outDir": "./bin" // Adjust for your project
   }
