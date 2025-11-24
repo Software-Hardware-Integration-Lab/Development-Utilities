@@ -54,7 +54,7 @@ jobs:
         steps:
             # Checks-out the repository under $GITHUB_WORKSPACE
             - name: Clone Repo
-              uses: actions/checkout@v5
+              uses: actions/checkout@v6
 
             # Set up NodeJS on the build host with caching support to optimize execution
             - name: Setup Node.JS Runtime
