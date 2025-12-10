@@ -1,10 +1,4 @@
-import { baseLintConfig } from './bin/index.js';
+import { eslintConfig } from './bin/config/linter/base.js'
+import { defineConfig } from 'eslint/config'
 
-export default [
-    ...baseLintConfig,
-    {
-        'ignores': [
-            'bin/'
-        ]
-    }
-];
+export default defineConfig(eslintConfig)
