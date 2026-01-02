@@ -31,6 +31,7 @@ export const eslintConfig = defineConfig(
             '@typescript-eslint/default-param-last': 'warn',
             '@typescript-eslint/explicit-function-return-type': 'warn',
             '@typescript-eslint/init-declarations': 'warn',
+            '@typescript-eslint/max-params': 'warn',
             '@typescript-eslint/no-invalid-this': 'warn',
             '@typescript-eslint/no-loop-func': 'warn',
             '@typescript-eslint/no-misused-promises': [
@@ -138,6 +139,7 @@ export const eslintConfig = defineConfig(
                 7
             ],
             'max-nested-callbacks': 'warn',
+            'max-params': 'off',
             'new-cap': 'warn',
             'no-alert': 'warn',
             'no-bitwise': 'warn',
@@ -297,6 +299,13 @@ export const eslintConfig = defineConfig(
                 'always',
                 {
                     'exceptAfterSingleLine': true
+                }
+            ],
+            'stylistic/max-len': [
+                'warn',
+                {
+                    'code': 120
+
                 }
             ],
             'stylistic/multiline-comment-style': 'warn',
