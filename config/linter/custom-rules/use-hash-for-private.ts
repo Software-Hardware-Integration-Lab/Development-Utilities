@@ -2,7 +2,7 @@ import { AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils';
 import type { Rule } from 'eslint';
 
 /** Define the rule metadata along with the logic to determine whether examined item should be flagged or not. */
-const useHasForPrivate: Rule.RuleModule = {
+const useHashForPrivate: Rule.RuleModule = {
     /**
      * Business logic of the rule to evaluate properties and functions.
      * @param context The item being examined.
@@ -66,4 +66,4 @@ const useHasForPrivate: Rule.RuleModule = {
 };
 
 // Share the rule with the world
-export default useHasForPrivate;
+export default useHashForPrivate;
