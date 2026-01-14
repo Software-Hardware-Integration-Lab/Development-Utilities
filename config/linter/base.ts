@@ -4,6 +4,7 @@ import globals from 'globals';
 import jsdoc from 'eslint-plugin-jsdoc';
 import stylistic from '@stylistic/eslint-plugin';
 import tseslint from 'typescript-eslint';
+import useHashForPrivate from './custom-rules/use-hash-for-private.js';
 
 /** Array of configuration objects merged together to form baseline for linting of the code. */
 export const eslintConfig = defineConfig(
@@ -22,6 +23,11 @@ export const eslintConfig = defineConfig(
         },
         'linterOptions': { 'reportUnusedDisableDirectives': true },
         'plugins': {
+            'custom': {
+                'rules': {
+                    'use-hash-for-private': useHashForPrivate
+                }
+            },
             jsdoc,
             stylistic
         },
@@ -70,6 +76,7 @@ export const eslintConfig = defineConfig(
             'consistent-return': 'off',
             'consistent-this': 'warn',
             'curly': 'warn',
+            'custom/use-hash-for-private': 'warn',
             'default-case': 'warn',
             'default-case-last': 'warn',
             'default-param-last': 'off',
