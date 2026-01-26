@@ -66,6 +66,7 @@ export const eslintConfig = defineConfig(
                     'allowNumber': true
                 }
             ],
+            '@typescript-eslint/strict-void-return': 'warn',
             'accessor-pairs': 'warn',
             'array-callback-return': 'warn',
             'arrow-body-style': 'warn',
