@@ -31,13 +31,13 @@ jobs:
         # Set of steps to run to lint the project
         steps:
             # Checks-out your repository under $GITHUB_WORKSPACE
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
 
             # Set up NodeJS on the build host
             - name: Setup Node.js environment
               uses: actions/setup-node@v6
               with:
-                  node-version: 22
+                  node-version: 24
                   cache: npm
                   cache-dependency-path: package-lock.json
 
