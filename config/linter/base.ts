@@ -123,8 +123,9 @@ export const eslintConfig = defineConfig(
                 {
                     'contexts': [
                         'ClassBody > PropertyDefinition',
+                        'ExportNamedDeclaration[declaration.type="VariableDeclaration"]',
                         /* eslint-disable-next-line */
-                        'VariableDeclaration:not(:has(VariableDeclarator[id.type=\"ArrayPattern\"])):not(:has(VariableDeclarator[id.type=\"ObjectPattern\"])):not(ExportNamedDeclaration > VariableDeclaration):not(ForOfStatement > VariableDeclaration):not(ForInStatement > VariableDeclaration):not(ForStatement > VariableDeclaration)',
+                        'VariableDeclaration:not(:has(VariableDeclarator[id.type="ArrayPattern"])):not(:has(VariableDeclarator[id.type="ObjectPattern"])):not(ExportNamedDeclaration > VariableDeclaration):not(ForOfStatement > VariableDeclaration):not(ForInStatement > VariableDeclaration):not(ForStatement > VariableDeclaration)',
                         'TSInterfaceDeclaration',
                         'TSPropertySignature',
                         'TSMethodSignature',
