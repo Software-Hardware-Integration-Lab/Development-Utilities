@@ -20,7 +20,7 @@
         },
         "./config/typescript/*.json": "./config/typescript/*.json"
     },
-    "packageManager": "npm@11.10.0",
+    "packageManager": "npm@11.15.0",
     "devEngines": {
         "runtime": {
             "name": "node",
@@ -58,21 +58,21 @@
     "homepage": "https://github.com/Software-Hardware-Integration-Lab/Development-Utilities#readme",
     "dependencies": {
         "@eslint/js": "~9.39.2",
-        "@stylistic/eslint-plugin": "~5.8.0",
+        "@stylistic/eslint-plugin": "~5.10.0",
         "eslint": "~9.39.2",
-        "eslint-config-next": "~16.1.6",
+        "eslint-config-next": "~16.2.6",
         "eslint-plugin-jsdoc": "~62.6.0",
         "eslint-plugin-react": "~7.37.5",
-        "eslint-plugin-react-hooks": "~7.0.1",
-        "typescript-eslint": "~8.56.0"
+        "eslint-plugin-react-hooks": "~7.1.1",
+        "typescript-eslint": "~8.59.4"
     },
     "devDependencies": {
         "@types/chai": "~5.2.3",
         "@types/eslint": "~9.6.1",
         "@types/mocha": "~10.0.10",
         "chai": "~6.2.2",
-        "mocha": "~11.7.5",
-        "next": "~16.1.6",
+        "mocha": "~11.7.6",
+        "next": "~16.2.6",
         "typescript": "~5.9.3"
     },
     "overrides": {
