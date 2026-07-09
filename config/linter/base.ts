@@ -1,6 +1,5 @@
 import { defineConfig, globalIgnores } from 'eslint/config';
 import eslint from '@eslint/js';
-import globals from 'globals';
 import jsdoc from 'eslint-plugin-jsdoc';
 import stylistic from '@stylistic/eslint-plugin';
 import tseslint from 'typescript-eslint';
@@ -12,14 +11,7 @@ export const eslintConfig = defineConfig(
     ...tseslint.configs.strictTypeChecked,
     ...tseslint.configs.stylisticTypeChecked,
     {
-        'languageOptions': {
-            'globals': {
-                ...globals.mocha,
-                ...globals.node,
-                ...globals.es2021
-            },
-            'parserOptions': { 'projectService': true }
-        },
+        'languageOptions': { 'parserOptions': { 'projectService': true } },
         'linterOptions': { 'reportUnusedDisableDirectives': true },
         'plugins': {
             jsdoc,
