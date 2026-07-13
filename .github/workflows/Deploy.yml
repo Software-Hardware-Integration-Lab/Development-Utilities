@@ -128,7 +128,7 @@ jobs:
 
             # Download the compiled server binary
             - name: Download Artifact From Build Job
-              uses: actions/download-artifact@v7
+              uses: actions/download-artifact@v8
               with:
                   name: Development-Utilities
 
