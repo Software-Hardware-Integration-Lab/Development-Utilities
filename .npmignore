@@ -1,4 +1,5 @@
 # Project files, only the built runtime files should be published
+index.ts
 /test
 bin/test
 config/**/*
@@ -6,5 +7,5 @@ config/**/*
 .vscode
 .github
 *.code-workspace
-tsconfig.json
+*tsconfig*.json
 eslint.config.mjs
