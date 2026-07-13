@@ -2,7 +2,7 @@
     "compilerOptions": {
         /* Visit https://aka.ms/tsconfig to read more about this file */
         /* Projects */
-        "incremental": true,
+        // "incremental": true, /* It is highly encouraged to enable this for the projects extending this config. */
         /* Language and Environment */
         "target": "ES2024",
         /* Modules */
