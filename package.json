@@ -1,5 +1,5 @@
 {
-    "name": "@shi-corp/development-utilities",
+    "name": "@software-hardware-integration-lab/development-utilities",
     "version": "3.0.0",
     "description": "Collection of configurations, settings and packages to be common across multiple products/repositories.",
     "main": "bin/index.js",
