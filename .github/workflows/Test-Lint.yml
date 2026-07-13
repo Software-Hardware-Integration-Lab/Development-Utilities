@@ -59,6 +59,10 @@ jobs:
             - name: Install All of the Project Dependencies
               run: sfw npm ci
 
+            # Build the project to ensure that the linter config is available
+            - name: Build Project
+              run: npm run build:Dev
+
             # Lint the Source code to ensure project standardization and best practices
             - name: Lint Source Code
               run: npm run lint
