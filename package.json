@@ -1,6 +1,6 @@
 {
     "name": "@software-hardware-integration-lab/development-utilities",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "description": "Collection of configurations, settings and packages to be common across multiple products/repositories.",
     "main": "bin/index.js",
     "type": "module",
@@ -14,7 +14,7 @@
     },
     "exports": {
         ".": {
-            "import": "./bin/src/index.js"
+            "import": "./bin/index.js"
         },
         "./optimized/lint/*.js": {
             "import": "./bin/config/linter/*.js"
