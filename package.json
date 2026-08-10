@@ -1,6 +1,6 @@
 {
     "name": "@software-hardware-integration-lab/development-utilities",
-    "version": "3.0.1-beta",
+    "version": "3.0.2-alpha1",
     "description": "Collection of configurations, settings and packages to be common across multiple products/repositories.",
     "main": "bin/index.js",
     "type": "module",
