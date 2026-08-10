@@ -15,13 +15,13 @@ export const eslintConfig = defineConfig(
         'languageOptions': { 'parserOptions': { 'projectService': true } },
         'linterOptions': { 'reportUnusedDisableDirectives': true },
         'plugins': {
-            jsdoc,
-            stylistic,
             'custom-rules': {
                 'rules': {
                     'v8-ignore-assert-guard-equals': v8IgnoreAssertGuardEquals
                 }
-            }
+            },
+            jsdoc,
+            stylistic
         },
         'rules': {
             '@typescript-eslint/class-methods-use-this': 'warn',
@@ -67,6 +67,7 @@ export const eslintConfig = defineConfig(
             'consistent-return': 'off',
             'consistent-this': 'warn',
             'curly': 'warn',
+            'custom-rules/v8-ignore-assert-guard-equals': 'warn',
             'default-case': 'warn',
             'default-case-last': 'warn',
             'default-param-last': 'off',
@@ -432,7 +433,6 @@ export const eslintConfig = defineConfig(
             'stylistic/yield-star-spacing': 'warn',
             'symbol-description': 'warn',
             'unicode-bom': 'warn',
-            'custom-rules/v8-ignore-assert-guard-equals': 'warn',
             'vars-on-top': 'warn',
             'yoda': 'warn'
         }
@@ -452,6 +452,7 @@ export const eslintConfig = defineConfig(
         'eslint.config.mjs',
         'eslint.config.js',
         'bin/',
+        'coverage/',
         'dist/'
     ])
 );
