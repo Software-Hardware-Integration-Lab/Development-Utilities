@@ -3,6 +3,7 @@ import eslint from '@eslint/js';
 import jsdoc from 'eslint-plugin-jsdoc';
 import stylistic from '@stylistic/eslint-plugin';
 import tseslint from 'typescript-eslint';
+import v8IgnoreAssertGuardEquals from './customRules/v8IgnoreAssertGuardEquals.js';
 
 /** Array of configuration objects merged together to form baseline for linting of the code. */
 export const eslintConfig = defineConfig(
@@ -15,7 +16,12 @@ export const eslintConfig = defineConfig(
         'linterOptions': { 'reportUnusedDisableDirectives': true },
         'plugins': {
             jsdoc,
-            stylistic
+            stylistic,
+            'custom-rules': {
+                'rules': {
+                    'v8-ignore-assert-guard-equals': v8IgnoreAssertGuardEquals
+                }
+            }
         },
         'rules': {
             '@typescript-eslint/class-methods-use-this': 'warn',
@@ -426,6 +432,7 @@ export const eslintConfig = defineConfig(
             'stylistic/yield-star-spacing': 'warn',
             'symbol-description': 'warn',
             'unicode-bom': 'warn',
+            'custom-rules/v8-ignore-assert-guard-equals': 'warn',
             'vars-on-top': 'warn',
             'yoda': 'warn'
         }
