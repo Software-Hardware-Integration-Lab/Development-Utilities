@@ -81,7 +81,7 @@ const v8IgnoreAssertGuardEquals: Rule.RuleModule = {
                         /** The comment to create. */
                         const comment = '/* v8 ignore next -- @preserve */\n';
 
-                        /** The comment directly before the code bing inspected. */
+                        /** The comment directly before the code being inspected. */
                         const precedingComment = sourceCode.getCommentsBefore(node).at(-1);
 
                         if (isLegacyV8IgnoreNextComment(precedingComment, node)) {
