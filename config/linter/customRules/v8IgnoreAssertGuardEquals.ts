@@ -1,4 +1,4 @@
-import { type Rule, SourceCode } from 'eslint';
+import { type Rule, type SourceCode } from 'eslint';
 import type { Comment } from 'estree';
 
 /**
