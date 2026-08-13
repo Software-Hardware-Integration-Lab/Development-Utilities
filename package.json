@@ -1,6 +1,6 @@
 {
     "name": "@software-hardware-integration-lab/development-utilities",
-    "version": "3.0.1-beta",
+    "version": "3.0.2-alpha1",
     "description": "Collection of configurations, settings and packages to be common across multiple products/repositories.",
     "main": "bin/index.js",
     "type": "module",
@@ -9,8 +9,11 @@
         "prebuild:Prod": "tsc -p prod.tsconfig.json --emitDeclarationOnly false",
         "build:Prod": "tsc -p prod.tsconfig.json --removeComments false",
         "lint": "eslint --max-warnings 0",
-        "test:Unit": "node --experimental-test-module-mocks --test bin/test/unit/**/*.test.js",
-        "test:Integration": "node --test bin/test/integration/**/*.test.js"
+        "test:Unit": "vitest run --config vitest.unit.config.ts",
+        "test:Unit:Coverage": "vitest run --config vitest.unit.config.ts --coverage",
+        "test:Unit:Watch": "vitest watch --config vitest.unit.config.ts",
+        "test:Integration": "vitest run --config vitest.integration.config.ts",
+        "test:Integration:Coverage": "vitest run --config vitest.integration.config.ts --coverage"
     },
     "exports": {
         ".": {
@@ -21,7 +24,7 @@
         },
         "./config/typescript/*.json": "./config/typescript/*.json"
     },
-    "packageManager": "npm@12.0.1",
+    "packageManager": "npm@12.0.2",
     "devEngines": {
         "runtime": {
             "name": "node",
@@ -59,14 +62,16 @@
     "dependencies": {
         "@eslint/js": "~10.0.1",
         "@stylistic/eslint-plugin": "~5.10.0",
-        "eslint": "~10.7.0",
-        "eslint-plugin-jsdoc": "~63.0.13",
+        "eslint": "~10.8.1",
+        "eslint-plugin-jsdoc": "~64.0.1",
         "eslint-plugin-react-hooks": "~7.1.1",
-        "typescript-eslint": "~8.63.0"
+        "typescript-eslint": "~8.66.0"
     },
     "devDependencies": {
         "@types/eslint": "~9.6.1",
-        "@types/node": "~26.1.1",
-        "typescript": "~6.0.3"
+        "@types/node": "~26.2.0",
+        "typescript": "~6.0.3",
+        "vitest": "^4.1.10",
+        "@vitest/coverage-v8": "^4.1.10"
     }
 }

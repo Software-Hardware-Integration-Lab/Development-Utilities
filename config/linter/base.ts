@@ -3,6 +3,7 @@ import eslint from '@eslint/js';
 import jsdoc from 'eslint-plugin-jsdoc';
 import stylistic from '@stylistic/eslint-plugin';
 import tseslint from 'typescript-eslint';
+import v8IgnoreAssertGuardEquals from './customRules/v8IgnoreAssertGuardEquals.js';
 
 /** Array of configuration objects merged together to form baseline for linting of the code. */
 export const eslintConfig = defineConfig(
@@ -14,6 +15,11 @@ export const eslintConfig = defineConfig(
         'languageOptions': { 'parserOptions': { 'projectService': true } },
         'linterOptions': { 'reportUnusedDisableDirectives': true },
         'plugins': {
+            'custom-rules': {
+                'rules': {
+                    'v8-ignore-assert-guard-equals': v8IgnoreAssertGuardEquals
+                }
+            },
             jsdoc,
             stylistic
         },
@@ -61,6 +67,7 @@ export const eslintConfig = defineConfig(
             'consistent-return': 'off',
             'consistent-this': 'warn',
             'curly': 'warn',
+            'custom-rules/v8-ignore-assert-guard-equals': 'warn',
             'default-case': 'warn',
             'default-case-last': 'warn',
             'default-param-last': 'off',
@@ -445,6 +452,7 @@ export const eslintConfig = defineConfig(
         'eslint.config.mjs',
         'eslint.config.js',
         'bin/',
+        'coverage/',
         'dist/'
     ])
 );
